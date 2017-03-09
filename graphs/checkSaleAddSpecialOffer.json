@@ -1,0 +1,316 @@
+{
+    "caseSensitive": false,
+    "properties": {
+        "name": "checkSaleAddSpecialOffer",
+        "environment": {
+            "type": "noflo-browser",
+            "content": ""
+        },
+        "description": "create Special-Offer object if the new sale has amount > 1000",
+        "icon": "cube"
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "core/RunInterval_yvhls": {
+            "component": "core/RunInterval",
+            "metadata": {
+                "label": "RunInterval",
+                "x": 36,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/CreateObject_3bouz": {
+            "component": "objects/CreateObject",
+            "metadata": {
+                "label": "CreateObject",
+                "x": 180,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_zjmzr": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 324,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Output_hkvxy": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "Output",
+                "x": 972,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "math/RangedRandomInt_tjk5o": {
+            "component": "math/RangedRandomInt",
+            "metadata": {
+                "label": "RangedRandomInt",
+                "x": 180,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "math/Compare_lmp1b": {
+            "component": "math/Compare",
+            "metadata": {
+                "label": "Compare",
+                "x": 576,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/ExtractProperty_w1nl2": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "ExtractProperty",
+                "x": 432,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/CreateObject_b81gv": {
+            "component": "objects/CreateObject",
+            "metadata": {
+                "label": "CreateObject",
+                "x": 684,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_17dj1": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 828,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "core/RunInterval_yvhls",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/CreateObject_3bouz",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 10
+            }
+        },
+        {
+            "src": {
+                "process": "objects/CreateObject_3bouz",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_zjmzr",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 10
+            }
+        },
+        {
+            "src": {
+                "process": "core/RunInterval_yvhls",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "math/RangedRandomInt_tjk5o",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "math/RangedRandomInt_tjk5o",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_zjmzr",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 6
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_zjmzr",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_w1nl2",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 5
+            }
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_w1nl2",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "math/Compare_lmp1b",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 5
+            }
+        },
+        {
+            "src": {
+                "process": "math/Compare_lmp1b",
+                "port": "pass"
+            },
+            "tgt": {
+                "process": "objects/CreateObject_b81gv",
+                "port": "start"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "objects/CreateObject_b81gv",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 2
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_hkvxy",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_w1nl2",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_hkvxy",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_zjmzr",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "amount",
+            "tgt": {
+                "process": "objects/ExtractProperty_w1nl2",
+                "port": "key"
+            }
+        },
+        {
+            "data": 1000,
+            "tgt": {
+                "process": "math/Compare_lmp1b",
+                "port": "comparison"
+            }
+        },
+        {
+            "data": ">=",
+            "tgt": {
+                "process": "math/Compare_lmp1b",
+                "port": "operator"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "SpecialOffer",
+            "tgt": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "property"
+            }
+        },
+        {
+            "data": "Buy1Get2Free",
+            "tgt": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "value"
+            }
+        },
+        {
+            "data": 1000,
+            "tgt": {
+                "process": "core/RunInterval_yvhls",
+                "port": "interval"
+            }
+        },
+        {
+            "data": "amount",
+            "tgt": {
+                "process": "objects/SetPropertyValue_zjmzr",
+                "port": "property"
+            }
+        },
+        {
+            "data": 2000,
+            "tgt": {
+                "process": "math/RangedRandomInt_tjk5o",
+                "port": "lower"
+            }
+        },
+        {
+            "data": 200,
+            "tgt": {
+                "process": "math/RangedRandomInt_tjk5o",
+                "port": "upper"
+            }
+        }
+    ]
+}
