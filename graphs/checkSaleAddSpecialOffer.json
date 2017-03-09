@@ -47,8 +47,8 @@
             "component": "core/Output",
             "metadata": {
                 "label": "Output",
-                "x": 972,
-                "y": 180,
+                "x": 684,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
