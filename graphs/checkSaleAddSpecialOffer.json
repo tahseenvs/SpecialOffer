@@ -3,7 +3,7 @@
     "properties": {
         "name": "checkSaleAddSpecialOffer",
         "environment": {
-            "type": "noflo-browser",
+            "type": "all",
             "content": ""
         },
         "description": "create Special-Offer object if the new sale has amount > 1000",
@@ -47,8 +47,8 @@
             "component": "core/Output",
             "metadata": {
                 "label": "Output",
-                "x": 684,
-                "y": 288,
+                "x": 972,
+                "y": 180,
                 "width": 72,
                 "height": 72
             }
