@@ -3,7 +3,7 @@
     "properties": {
         "name": "checkSaleAddSpecialOffer",
         "environment": {
-            "type": "all",
+            "type": "noflo-browser",
             "content": ""
         },
         "description": "create Special-Offer object if the new sale has amount > 1000",
@@ -11,14 +11,39 @@
     },
     "inports": {},
     "outports": {},
-    "groups": [],
+    "groups": [
+        {
+            "name": "RandomSales",
+            "nodes": [
+                "core/RunInterval_yvhls",
+                "math/RangedRandomInt_tjk5o",
+                "objects/CreateObject_3bouz",
+                "objects/SetPropertyValue_zjmzr"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        },
+        {
+            "name": "Special Offer workflow",
+            "nodes": [
+                "math/Compare_lmp1b",
+                "objects/CreateObject_b81gv",
+                "objects/ExtractProperty_w1nl2",
+                "objects/SetPropertyValue_17dj1"
+            ],
+            "metadata": {
+                "description": ""
+            }
+        }
+    ],
     "processes": {
         "core/RunInterval_yvhls": {
             "component": "core/RunInterval",
             "metadata": {
                 "label": "RunInterval",
-                "x": 36,
-                "y": 180,
+                "x": -108,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -27,8 +52,8 @@
             "component": "objects/CreateObject",
             "metadata": {
                 "label": "CreateObject",
-                "x": 180,
-                "y": 180,
+                "x": 36,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -37,8 +62,8 @@
             "component": "objects/SetPropertyValue",
             "metadata": {
                 "label": "SetPropertyValue",
-                "x": 324,
-                "y": 144,
+                "x": 180,
+                "y": 216,
                 "width": 72,
                 "height": 72
             }
@@ -47,8 +72,8 @@
             "component": "core/Output",
             "metadata": {
                 "label": "Output",
-                "x": 972,
-                "y": 180,
+                "x": 720,
+                "y": 360,
                 "width": 72,
                 "height": 72
             }
@@ -57,17 +82,7 @@
             "component": "math/RangedRandomInt",
             "metadata": {
                 "label": "RangedRandomInt",
-                "x": 180,
-                "y": 36,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "math/Compare_lmp1b": {
-            "component": "math/Compare",
-            "metadata": {
-                "label": "Compare",
-                "x": 576,
+                "x": 36,
                 "y": 108,
                 "width": 72,
                 "height": 72
@@ -78,7 +93,17 @@
             "metadata": {
                 "label": "ExtractProperty",
                 "x": 432,
-                "y": 180,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "math/Compare_lmp1b": {
+            "component": "math/Compare",
+            "metadata": {
+                "label": "Compare",
+                "x": 540,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
@@ -88,7 +113,7 @@
             "metadata": {
                 "label": "CreateObject",
                 "x": 684,
-                "y": 108,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
@@ -98,7 +123,7 @@
             "metadata": {
                 "label": "SetPropertyValue",
                 "x": 828,
-                "y": 108,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
@@ -159,6 +184,19 @@
         },
         {
             "src": {
+                "process": "objects/ExtractProperty_w1nl2",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_hkvxy",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
                 "process": "objects/SetPropertyValue_zjmzr",
                 "port": "out"
             },
@@ -198,6 +236,19 @@
         },
         {
             "src": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_hkvxy",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
                 "process": "objects/CreateObject_b81gv",
                 "port": "out"
             },
@@ -210,78 +261,10 @@
             }
         },
         {
-            "src": {
-                "process": "objects/SetPropertyValue_17dj1",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Output_hkvxy",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 1
-            }
-        },
-        {
-            "src": {
-                "process": "objects/ExtractProperty_w1nl2",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Output_hkvxy",
-                "port": "in"
-            },
-            "metadata": {
-                "route": 1
-            }
-        },
-        {
             "data": true,
             "tgt": {
                 "process": "objects/SetPropertyValue_zjmzr",
                 "port": "keep"
-            }
-        },
-        {
-            "data": "amount",
-            "tgt": {
-                "process": "objects/ExtractProperty_w1nl2",
-                "port": "key"
-            }
-        },
-        {
-            "data": 1000,
-            "tgt": {
-                "process": "math/Compare_lmp1b",
-                "port": "comparison"
-            }
-        },
-        {
-            "data": ">=",
-            "tgt": {
-                "process": "math/Compare_lmp1b",
-                "port": "operator"
-            }
-        },
-        {
-            "data": true,
-            "tgt": {
-                "process": "objects/SetPropertyValue_17dj1",
-                "port": "keep"
-            }
-        },
-        {
-            "data": "SpecialOffer",
-            "tgt": {
-                "process": "objects/SetPropertyValue_17dj1",
-                "port": "property"
-            }
-        },
-        {
-            "data": "Buy1Get2Free",
-            "tgt": {
-                "process": "objects/SetPropertyValue_17dj1",
-                "port": "value"
             }
         },
         {
@@ -310,6 +293,48 @@
             "tgt": {
                 "process": "math/RangedRandomInt_tjk5o",
                 "port": "upper"
+            }
+        },
+        {
+            "data": "amount",
+            "tgt": {
+                "process": "objects/ExtractProperty_w1nl2",
+                "port": "key"
+            }
+        },
+        {
+            "data": ">=",
+            "tgt": {
+                "process": "math/Compare_lmp1b",
+                "port": "operator"
+            }
+        },
+        {
+            "data": 1000,
+            "tgt": {
+                "process": "math/Compare_lmp1b",
+                "port": "comparison"
+            }
+        },
+        {
+            "data": "Buy1Get2Free",
+            "tgt": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "value"
+            }
+        },
+        {
+            "data": "SpecialOffer",
+            "tgt": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "property"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_17dj1",
+                "port": "keep"
             }
         }
     ]
