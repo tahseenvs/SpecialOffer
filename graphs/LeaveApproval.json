@@ -1,0 +1,257 @@
+{
+    "caseSensitive": false,
+    "properties": {
+        "name": "LeaveApproval",
+        "environment": {
+            "type": "noflo-browser"
+        }
+    },
+    "inports": {},
+    "outports": {},
+    "groups": [],
+    "processes": {
+        "objects/CreateObject_z78m1": {
+            "component": "objects/CreateObject",
+            "metadata": {
+                "label": "CreateObject",
+                "x": 144,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Output_r5yj5": {
+            "component": "core/Output",
+            "metadata": {
+                "label": "Output",
+                "x": 864,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/RunInterval_v6aj7": {
+            "component": "core/RunInterval",
+            "metadata": {
+                "label": "RunInterval",
+                "x": 36,
+                "y": 180,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_1rq3g": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 288,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/CreateObject_9axk6": {
+            "component": "objects/CreateObject",
+            "metadata": {
+                "label": "CreateObject",
+                "x": 36,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/ExtractProperty_6gsz7": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "ExtractProperty",
+                "x": 432,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "strings/Sift3Distance_7pjzo": {
+            "component": "strings/Sift3Distance",
+            "metadata": {
+                "label": "Sift3Distance",
+                "x": 576,
+                "y": 36,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "math/Compare_sbinl": {
+            "component": "math/Compare",
+            "metadata": {
+                "label": "Compare",
+                "x": 684,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        }
+    },
+    "connections": [
+        {
+            "src": {
+                "process": "core/RunInterval_v6aj7",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/CreateObject_z78m1",
+                "port": "start"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/CreateObject_z78m1",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_1rq3g",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_1rq3g",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_1rq3g",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_6gsz7",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_6gsz7",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "strings/Sift3Distance_7pjzo",
+                "port": "string1"
+            },
+            "metadata": {
+                "route": null
+            }
+        },
+        {
+            "src": {
+                "process": "strings/Sift3Distance_7pjzo",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "math/Compare_sbinl",
+                "port": "value"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "math/Compare_sbinl",
+                "port": "pass"
+            },
+            "tgt": {
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "math/Compare_sbinl",
+                "port": "fail"
+            },
+            "tgt": {
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/ExtractProperty_6gsz7",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "math/Compare_sbinl",
+                "port": "value"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "data": 3000,
+            "tgt": {
+                "process": "core/RunInterval_v6aj7",
+                "port": "interval"
+            }
+        },
+        {
+            "data": "Status",
+            "tgt": {
+                "process": "objects/SetPropertyValue_1rq3g",
+                "port": "property"
+            }
+        },
+        {
+            "data": "created",
+            "tgt": {
+                "process": "objects/SetPropertyValue_1rq3g",
+                "port": "value"
+            }
+        },
+        {
+            "data": "Status",
+            "tgt": {
+                "process": "objects/ExtractProperty_6gsz7",
+                "port": "key"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_1rq3g",
+                "port": "keep"
+            }
+        },
+        {
+            "data": 0,
+            "tgt": {
+                "process": "math/Compare_sbinl",
+                "port": "comparison"
+            }
+        },
+        {
+            "data": "==",
+            "tgt": {
+                "process": "math/Compare_sbinl",
+                "port": "operator"
+            }
+        },
+        {
+            "data": "created",
+            "tgt": {
+                "process": "strings/Sift3Distance_7pjzo",
+                "port": "string2"
+            }
+        }
+    ]
+}
