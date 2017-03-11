@@ -227,20 +227,20 @@
                 "height": 72
             }
         },
-        "core/SendNext_oiblh": {
-            "component": "core/SendNext",
+        "flow/Gate_azt4k": {
+            "component": "flow/Gate",
             "metadata": {
-                "label": "SendNext",
-                "x": 1296,
+                "label": "Gate",
+                "x": 1332,
                 "y": 108,
                 "width": 72,
                 "height": 72
             }
         },
-        "core/SendNext_8lupa": {
-            "component": "core/SendNext",
+        "flow/Gate_fsolz": {
+            "component": "flow/Gate",
             "metadata": {
-                "label": "SendNext",
+                "label": "Gate",
                 "x": 2412,
                 "y": 144,
                 "width": 72,
@@ -493,8 +493,8 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "core/SendNext_oiblh",
-                "port": "data"
+                "process": "flow/Gate_azt4k",
+                "port": "in"
             },
             "metadata": {}
         },
@@ -504,14 +504,14 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "core/SendNext_oiblh",
-                "port": "in"
+                "process": "flow/Gate_azt4k",
+                "port": "open"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "core/SendNext_oiblh",
+                "process": "flow/Gate_azt4k",
                 "port": "out"
             },
             "tgt": {
@@ -522,27 +522,16 @@
         },
         {
             "src": {
-                "process": "core/SendNext_oiblh",
-                "port": "empty"
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "out"
             },
             "tgt": {
-                "process": "core/Output_r5yj5",
+                "process": "flow/Gate_fsolz",
                 "port": "in"
             },
             "metadata": {
-                "route": 9
+                "route": 0
             }
-        },
-        {
-            "src": {
-                "process": "objects/SetPropertyValue_inu1l",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/SendNext_8lupa",
-                "port": "data"
-            },
-            "metadata": {}
         },
         {
             "src": {
@@ -550,14 +539,14 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "core/SendNext_8lupa",
-                "port": "in"
+                "process": "flow/Gate_fsolz",
+                "port": "open"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "core/SendNext_8lupa",
+                "process": "flow/Gate_fsolz",
                 "port": "out"
             },
             "tgt": {
@@ -565,6 +554,32 @@
                 "port": "in"
             },
             "metadata": {}
+        },
+        {
+            "src": {
+                "process": "flow/Gate_azt4k",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "flow/Gate_azt4k",
+                "port": "close"
+            },
+            "metadata": {
+                "route": 3
+            }
+        },
+        {
+            "src": {
+                "process": "flow/Gate_fsolz",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "flow/Gate_fsolz",
+                "port": "close"
+            },
+            "metadata": {
+                "route": 3
+            }
         },
         {
             "data": "Status",
