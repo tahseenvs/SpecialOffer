@@ -8,14 +8,52 @@
     },
     "inports": {},
     "outports": {},
-    "groups": [],
+    "groups": [
+        {
+            "name": "New Leave",
+            "nodes": [
+                "core/RunInterval_v6aj7",
+                "objects/CreateObject_z78m1",
+                "objects/SetPropertyValue_1rq3g"
+            ],
+            "metadata": {
+                "description": "New Leave added"
+            }
+        },
+        {
+            "name": "ApprovalRequest to Supervisor",
+            "nodes": [
+                "objects/CreateObject_zxj1j",
+                "objects/ExtractProperty_6gsz7",
+                "objects/SetPropertyValue_2l0g4",
+                "objects/SetPropertyValue_b662u",
+                "strings/Filter_7exmh"
+            ],
+            "metadata": {
+                "description": "on new leave: an approval-request for supervisor is created"
+            }
+        },
+        {
+            "name": "ApprovalRequest to CEO",
+            "nodes": [
+                "objects/CreateObject_vdxrq",
+                "objects/ExtractProperty_m4t6c",
+                "objects/SetPropertyValue_ciugp",
+                "objects/SetPropertyValue_nw3p6",
+                "strings/Filter_gexq6"
+            ],
+            "metadata": {
+                "description": "after approval by supervisor: new approval request to ceo"
+            }
+        }
+    ],
     "processes": {
         "objects/CreateObject_z78m1": {
             "component": "objects/CreateObject",
             "metadata": {
                 "label": "CreateObject",
-                "x": 144,
-                "y": 180,
+                "x": 180,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -24,8 +62,8 @@
             "component": "core/Output",
             "metadata": {
                 "label": "Output",
-                "x": 864,
-                "y": 216,
+                "x": 1584,
+                "y": -180,
                 "width": 72,
                 "height": 72
             }
@@ -35,7 +73,7 @@
             "metadata": {
                 "label": "RunInterval",
                 "x": 36,
-                "y": 180,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -44,18 +82,8 @@
             "component": "objects/SetPropertyValue",
             "metadata": {
                 "label": "SetPropertyValue",
-                "x": 288,
-                "y": 144,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "objects/CreateObject_9axk6": {
-            "component": "objects/CreateObject",
-            "metadata": {
-                "label": "CreateObject",
-                "x": 36,
-                "y": 36,
+                "x": 324,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -64,28 +92,148 @@
             "component": "objects/ExtractProperty",
             "metadata": {
                 "label": "ExtractProperty",
-                "x": 432,
-                "y": 36,
+                "x": 504,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
         },
-        "strings/Sift3Distance_7pjzo": {
-            "component": "strings/Sift3Distance",
+        "strings/Filter_7exmh": {
+            "component": "strings/Filter",
             "metadata": {
-                "label": "Sift3Distance",
-                "x": 576,
-                "y": 36,
+                "label": "Filter",
+                "x": 648,
+                "y": 72,
                 "width": 72,
                 "height": 72
             }
         },
-        "math/Compare_sbinl": {
-            "component": "math/Compare",
+        "objects/CreateObject_zxj1j": {
+            "component": "objects/CreateObject",
             "metadata": {
-                "label": "Compare",
-                "x": 684,
+                "label": "CreateObject",
+                "x": 756,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_2l0g4": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 900,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_b662u": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 1008,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/ExtractProperty_m4t6c": {
+            "component": "objects/ExtractProperty",
+            "metadata": {
+                "label": "ExtractProperty",
+                "x": 1656,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "strings/Filter_gexq6": {
+            "component": "strings/Filter",
+            "metadata": {
+                "label": "Filter",
+                "x": 1764,
                 "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/CreateObject_vdxrq": {
+            "component": "objects/CreateObject",
+            "metadata": {
+                "label": "CreateObject",
+                "x": 1908,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_nw3p6": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 2016,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_ciugp": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 2160,
+                "y": 72,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_cidda": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 2376,
+                "y": 288,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Kick_izc83": {
+            "component": "core/Kick",
+            "metadata": {
+                "label": "Kick",
+                "x": 2484,
+                "y": 324,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_xl5j": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 1188,
+                "y": 216,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_inu1l": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 1440,
+                "y": 252,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/Kick_bvv9p": {
+            "component": "core/Kick",
+            "metadata": {
+                "label": "Kick",
+                "x": 1332,
+                "y": 252,
                 "width": 72,
                 "height": 72
             }
@@ -123,7 +271,9 @@
                 "process": "core/Output_r5yj5",
                 "port": "in"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 1
+            }
         },
         {
             "src": {
@@ -144,64 +294,226 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "strings/Sift3Distance_7pjzo",
-                "port": "string1"
+                "process": "strings/Filter_7exmh",
+                "port": "in"
             },
-            "metadata": {
-                "route": null
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "strings/Filter_7exmh",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/CreateObject_zxj1j",
+                "port": "start"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/CreateObject_zxj1j",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_2l0g4",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_2l0g4",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_b662u",
+                "port": "in"
             }
         },
         {
             "src": {
-                "process": "strings/Sift3Distance_7pjzo",
+                "process": "objects/SetPropertyValue_b662u",
                 "port": "out"
             },
             "tgt": {
-                "process": "math/Compare_sbinl",
-                "port": "value"
+                "process": "core/Output_r5yj5",
+                "port": "in"
             },
-            "metadata": {}
+            "metadata": {
+                "route": 1,
+                "secure": true
+            }
         },
         {
             "src": {
-                "process": "math/Compare_sbinl",
-                "port": "pass"
+                "process": "objects/ExtractProperty_m4t6c",
+                "port": "out"
             },
             "tgt": {
-                "process": "core/Output_r5yj5",
+                "process": "strings/Filter_gexq6",
                 "port": "in"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "math/Compare_sbinl",
-                "port": "fail"
+                "process": "strings/Filter_gexq6",
+                "port": "out"
             },
             "tgt": {
-                "process": "core/Output_r5yj5",
+                "process": "objects/CreateObject_vdxrq",
+                "port": "start"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/CreateObject_vdxrq",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_nw3p6",
                 "port": "in"
             },
             "metadata": {}
         },
         {
             "src": {
-                "process": "objects/ExtractProperty_6gsz7",
+                "process": "objects/SetPropertyValue_nw3p6",
                 "port": "out"
             },
             "tgt": {
-                "process": "math/Compare_sbinl",
-                "port": "value"
+                "process": "objects/SetPropertyValue_ciugp",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_ciugp",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_ciugp",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_cidda",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_cidda",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Kick_izc83",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_xl5j",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_b662u",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_xl5j",
+                "port": "in"
             },
             "metadata": {
                 "route": 0
             }
         },
         {
-            "data": 3000,
+            "src": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "out"
+            },
             "tgt": {
-                "process": "core/RunInterval_v6aj7",
-                "port": "interval"
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/ExtractProperty_m4t6c",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Kick_izc83",
+                "port": "data"
+            }
+        },
+        {
+            "src": {
+                "process": "core/Kick_bvv9p",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "in"
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_1rq3g",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Kick_bvv9p",
+                "port": "data"
+            },
+            "metadata": {
+                "route": 0
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_xl5j",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Kick_bvv9p",
+                "port": "in"
             }
         },
         {
@@ -233,24 +545,150 @@
             }
         },
         {
-            "data": 0,
+            "data": "(?:created)",
             "tgt": {
-                "process": "math/Compare_sbinl",
-                "port": "comparison"
+                "process": "strings/Filter_7exmh",
+                "port": "pattern"
             }
         },
         {
-            "data": "==",
+            "data": "approved",
             "tgt": {
-                "process": "math/Compare_sbinl",
-                "port": "operator"
+                "process": "objects/SetPropertyValue_2l0g4",
+                "port": "property"
             }
         },
         {
-            "data": "created",
+            "data": "false",
             "tgt": {
-                "process": "strings/Sift3Distance_7pjzo",
-                "port": "string2"
+                "process": "objects/SetPropertyValue_2l0g4",
+                "port": "value"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_2l0g4",
+                "port": "keep"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_b662u",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "supervisor",
+            "tgt": {
+                "process": "objects/SetPropertyValue_b662u",
+                "port": "value"
+            }
+        },
+        {
+            "data": "by",
+            "tgt": {
+                "process": "objects/SetPropertyValue_b662u",
+                "port": "property"
+            }
+        },
+        {
+            "data": 10000,
+            "tgt": {
+                "process": "core/RunInterval_v6aj7",
+                "port": "interval"
+            }
+        },
+        {
+            "data": "Status",
+            "tgt": {
+                "process": "objects/ExtractProperty_m4t6c",
+                "port": "key"
+            }
+        },
+        {
+            "data": "(?:supervisor-approved)",
+            "tgt": {
+                "process": "strings/Filter_gexq6",
+                "port": "pattern"
+            }
+        },
+        {
+            "data": "approved",
+            "tgt": {
+                "process": "objects/SetPropertyValue_nw3p6",
+                "port": "property"
+            }
+        },
+        {
+            "data": "false",
+            "tgt": {
+                "process": "objects/SetPropertyValue_nw3p6",
+                "port": "value"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_nw3p6",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "by",
+            "tgt": {
+                "process": "objects/SetPropertyValue_ciugp",
+                "port": "property"
+            }
+        },
+        {
+            "data": "ceo",
+            "tgt": {
+                "process": "objects/SetPropertyValue_ciugp",
+                "port": "value"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_xl5j",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "true",
+            "tgt": {
+                "process": "objects/SetPropertyValue_xl5j",
+                "port": "value"
+            }
+        },
+        {
+            "data": "approved",
+            "tgt": {
+                "process": "objects/SetPropertyValue_xl5j",
+                "port": "property"
+            }
+        },
+        {
+            "data": "Status",
+            "tgt": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "property"
+            }
+        },
+        {
+            "data": "supervisor-approved",
+            "tgt": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "value"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "keep"
             }
         }
     ]
