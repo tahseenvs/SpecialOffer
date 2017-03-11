@@ -12,7 +12,6 @@
         {
             "name": "New Leave",
             "nodes": [
-                "core/RunInterval_v6aj7",
                 "objects/CreateObject_z78m1",
                 "objects/SetPropertyValue_1rq3g"
             ],
@@ -64,16 +63,6 @@
                 "label": "Output",
                 "x": 2016,
                 "y": -288,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "core/RunInterval_v6aj7": {
-            "component": "core/RunInterval",
-            "metadata": {
-                "label": "RunInterval",
-                "x": 36,
-                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -247,20 +236,19 @@
                 "width": 72,
                 "height": 72
             }
+        },
+        "core/Repeat_jx7ff": {
+            "component": "core/Repeat",
+            "metadata": {
+                "label": "Repeat",
+                "x": -108,
+                "y": 288,
+                "width": 72,
+                "height": 72
+            }
         }
     },
     "connections": [
-        {
-            "src": {
-                "process": "core/RunInterval_v6aj7",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "objects/CreateObject_z78m1",
-                "port": "start"
-            },
-            "metadata": {}
-        },
         {
             "src": {
                 "process": "objects/CreateObject_z78m1",
@@ -551,6 +539,30 @@
             }
         },
         {
+            "src": {
+                "process": "objects/SetPropertyValue_cidda",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
+            "src": {
+                "process": "core/Repeat_jx7ff",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/CreateObject_z78m1",
+                "port": "start"
+            },
+            "metadata": {}
+        },
+        {
             "data": "Status",
             "tgt": {
                 "process": "objects/SetPropertyValue_1rq3g",
@@ -625,13 +637,6 @@
             "tgt": {
                 "process": "objects/SetPropertyValue_b662u",
                 "port": "property"
-            }
-        },
-        {
-            "data": 10000,
-            "tgt": {
-                "process": "core/RunInterval_v6aj7",
-                "port": "interval"
             }
         },
         {
@@ -765,6 +770,13 @@
             "tgt": {
                 "process": "objects/SetPropertyValue_cidda",
                 "port": "keep"
+            }
+        },
+        {
+            "data": "Start",
+            "tgt": {
+                "process": "core/Repeat_jx7ff",
+                "port": "in"
             }
         }
     ]
