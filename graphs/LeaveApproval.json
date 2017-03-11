@@ -53,7 +53,7 @@
             "metadata": {
                 "label": "CreateObject",
                 "x": 180,
-                "y": 252,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -62,8 +62,8 @@
             "component": "core/Output",
             "metadata": {
                 "label": "Output",
-                "x": 1584,
-                "y": -180,
+                "x": 2016,
+                "y": -288,
                 "width": 72,
                 "height": 72
             }
@@ -73,7 +73,7 @@
             "metadata": {
                 "label": "RunInterval",
                 "x": 36,
-                "y": 252,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -83,7 +83,7 @@
             "metadata": {
                 "label": "SetPropertyValue",
                 "x": 324,
-                "y": 252,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -142,8 +142,8 @@
             "component": "objects/ExtractProperty",
             "metadata": {
                 "label": "ExtractProperty",
-                "x": 1656,
-                "y": 72,
+                "x": 1620,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -152,8 +152,8 @@
             "component": "strings/Filter",
             "metadata": {
                 "label": "Filter",
-                "x": 1764,
-                "y": 108,
+                "x": 1728,
+                "y": 324,
                 "width": 72,
                 "height": 72
             }
@@ -162,8 +162,8 @@
             "component": "objects/CreateObject",
             "metadata": {
                 "label": "CreateObject",
-                "x": 1908,
-                "y": 72,
+                "x": 1872,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -173,7 +173,7 @@
             "metadata": {
                 "label": "SetPropertyValue",
                 "x": 2016,
-                "y": 72,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -182,8 +182,8 @@
             "component": "objects/SetPropertyValue",
             "metadata": {
                 "label": "SetPropertyValue",
-                "x": 2160,
-                "y": 72,
+                "x": 2124,
+                "y": 288,
                 "width": 72,
                 "height": 72
             }
@@ -192,8 +192,8 @@
             "component": "objects/SetPropertyValue",
             "metadata": {
                 "label": "SetPropertyValue",
-                "x": 2376,
-                "y": 288,
+                "x": 2268,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -202,8 +202,8 @@
             "component": "core/Kick",
             "metadata": {
                 "label": "Kick",
-                "x": 2484,
-                "y": 324,
+                "x": 2412,
+                "y": 180,
                 "width": 72,
                 "height": 72
             }
@@ -213,7 +213,7 @@
             "metadata": {
                 "label": "SetPropertyValue",
                 "x": 1188,
-                "y": 216,
+                "y": 36,
                 "width": 72,
                 "height": 72
             }
@@ -223,7 +223,7 @@
             "metadata": {
                 "label": "SetPropertyValue",
                 "x": 1440,
-                "y": 252,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -233,7 +233,17 @@
             "metadata": {
                 "label": "Kick",
                 "x": 1332,
-                "y": 252,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "objects/SetPropertyValue_a56g0": {
+            "component": "objects/SetPropertyValue",
+            "metadata": {
+                "label": "SetPropertyValue",
+                "x": 2556,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
@@ -517,6 +527,30 @@
             }
         },
         {
+            "src": {
+                "process": "core/Kick_izc83",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_a56g0",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_a56g0",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 1
+            }
+        },
+        {
             "data": "Status",
             "tgt": {
                 "process": "objects/SetPropertyValue_1rq3g",
@@ -688,6 +722,48 @@
             "data": true,
             "tgt": {
                 "process": "objects/SetPropertyValue_inu1l",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "Status",
+            "tgt": {
+                "process": "objects/SetPropertyValue_a56g0",
+                "port": "property"
+            }
+        },
+        {
+            "data": "ceo-approved",
+            "tgt": {
+                "process": "objects/SetPropertyValue_a56g0",
+                "port": "value"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_a56g0",
+                "port": "keep"
+            }
+        },
+        {
+            "data": "approved",
+            "tgt": {
+                "process": "objects/SetPropertyValue_cidda",
+                "port": "property"
+            }
+        },
+        {
+            "data": "true",
+            "tgt": {
+                "process": "objects/SetPropertyValue_cidda",
+                "port": "value"
+            }
+        },
+        {
+            "data": true,
+            "tgt": {
+                "process": "objects/SetPropertyValue_cidda",
                 "port": "keep"
             }
         }
