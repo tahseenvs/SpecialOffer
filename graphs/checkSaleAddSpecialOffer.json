@@ -27,10 +27,10 @@
         {
             "name": "Special Offer workflow",
             "nodes": [
-                "math/Compare_lmp1b",
-                "objects/CreateObject_b81gv",
-                "objects/ExtractProperty_w1nl2",
-                "objects/SetPropertyValue_17dj1"
+                "IsAmountGeaterthen1000",
+                "CreateRecord",
+                "GetSaleAmount",
+                "SetSpecialOfferType"
             ],
             "metadata": {
                 "description": ""
@@ -68,10 +68,10 @@
                 "height": 72
             }
         },
-        "core/Output_hkvxy": {
+        "DisplayLog": {
             "component": "core/Output",
             "metadata": {
-                "label": "Output",
+                "label": "DisplayLog",
                 "x": 720,
                 "y": 360,
                 "width": 72,
@@ -88,42 +88,42 @@
                 "height": 72
             }
         },
-        "objects/ExtractProperty_w1nl2": {
+        "GetSaleAmount": {
             "component": "objects/ExtractProperty",
             "metadata": {
-                "label": "ExtractProperty",
+                "label": "GetSaleAmount",
                 "x": 432,
-                "y": 72,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
         },
-        "math/Compare_lmp1b": {
+        "IsAmountGeaterthen1000": {
             "component": "math/Compare",
             "metadata": {
-                "label": "Compare",
-                "x": 540,
-                "y": 72,
+                "label": "IsAmountGeaterthen1000",
+                "x": 612,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
         },
-        "objects/CreateObject_b81gv": {
+        "CreateRecord": {
             "component": "objects/CreateObject",
             "metadata": {
-                "label": "CreateObject",
-                "x": 684,
-                "y": 72,
+                "label": "CreateRecord",
+                "x": 756,
+                "y": 144,
                 "width": 72,
                 "height": 72
             }
         },
-        "objects/SetPropertyValue_17dj1": {
+        "SetSpecialOfferType": {
             "component": "objects/SetPropertyValue",
             "metadata": {
-                "label": "SetPropertyValue",
-                "x": 828,
-                "y": 72,
+                "label": "SetSpecialOfferType",
+                "x": 900,
+                "y": 108,
                 "width": 72,
                 "height": 72
             }
@@ -184,11 +184,11 @@
         },
         {
             "src": {
-                "process": "objects/ExtractProperty_w1nl2",
+                "process": "GetSaleAmount",
                 "port": "out"
             },
             "tgt": {
-                "process": "core/Output_hkvxy",
+                "process": "DisplayLog",
                 "port": "in"
             },
             "metadata": {
@@ -201,7 +201,7 @@
                 "port": "out"
             },
             "tgt": {
-                "process": "objects/ExtractProperty_w1nl2",
+                "process": "GetSaleAmount",
                 "port": "in"
             },
             "metadata": {
@@ -210,11 +210,11 @@
         },
         {
             "src": {
-                "process": "objects/ExtractProperty_w1nl2",
+                "process": "GetSaleAmount",
                 "port": "out"
             },
             "tgt": {
-                "process": "math/Compare_lmp1b",
+                "process": "IsAmountGeaterthen1000",
                 "port": "value"
             },
             "metadata": {
@@ -223,11 +223,11 @@
         },
         {
             "src": {
-                "process": "math/Compare_lmp1b",
+                "process": "IsAmountGeaterthen1000",
                 "port": "pass"
             },
             "tgt": {
-                "process": "objects/CreateObject_b81gv",
+                "process": "CreateRecord",
                 "port": "start"
             },
             "metadata": {
@@ -236,11 +236,11 @@
         },
         {
             "src": {
-                "process": "objects/SetPropertyValue_17dj1",
+                "process": "SetSpecialOfferType",
                 "port": "out"
             },
             "tgt": {
-                "process": "core/Output_hkvxy",
+                "process": "DisplayLog",
                 "port": "in"
             },
             "metadata": {
@@ -249,11 +249,11 @@
         },
         {
             "src": {
-                "process": "objects/CreateObject_b81gv",
+                "process": "CreateRecord",
                 "port": "out"
             },
             "tgt": {
-                "process": "objects/SetPropertyValue_17dj1",
+                "process": "SetSpecialOfferType",
                 "port": "in"
             },
             "metadata": {
@@ -298,42 +298,42 @@
         {
             "data": "amount",
             "tgt": {
-                "process": "objects/ExtractProperty_w1nl2",
+                "process": "GetSaleAmount",
                 "port": "key"
             }
         },
         {
             "data": ">=",
             "tgt": {
-                "process": "math/Compare_lmp1b",
+                "process": "IsAmountGeaterthen1000",
                 "port": "operator"
             }
         },
         {
             "data": 1000,
             "tgt": {
-                "process": "math/Compare_lmp1b",
+                "process": "IsAmountGeaterthen1000",
                 "port": "comparison"
             }
         },
         {
             "data": "Buy1Get2Free",
             "tgt": {
-                "process": "objects/SetPropertyValue_17dj1",
+                "process": "SetSpecialOfferType",
                 "port": "value"
             }
         },
         {
             "data": "SpecialOffer",
             "tgt": {
-                "process": "objects/SetPropertyValue_17dj1",
+                "process": "SetSpecialOfferType",
                 "port": "property"
             }
         },
         {
             "data": true,
             "tgt": {
-                "process": "objects/SetPropertyValue_17dj1",
+                "process": "SetSpecialOfferType",
                 "port": "keep"
             }
         }

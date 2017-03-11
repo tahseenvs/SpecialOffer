@@ -187,16 +187,6 @@
                 "height": 72
             }
         },
-        "core/Kick_izc83": {
-            "component": "core/Kick",
-            "metadata": {
-                "label": "Kick",
-                "x": 2412,
-                "y": 180,
-                "width": 72,
-                "height": 72
-            }
-        },
         "objects/SetPropertyValue_xl5j": {
             "component": "objects/SetPropertyValue",
             "metadata": {
@@ -212,16 +202,6 @@
             "metadata": {
                 "label": "SetPropertyValue",
                 "x": 1440,
-                "y": 108,
-                "width": 72,
-                "height": 72
-            }
-        },
-        "core/Kick_bvv9p": {
-            "component": "core/Kick",
-            "metadata": {
-                "label": "Kick",
-                "x": 1332,
                 "y": 108,
                 "width": 72,
                 "height": 72
@@ -246,6 +226,26 @@
                 "width": 72,
                 "height": 72
             }
+        },
+        "core/SendNext_oiblh": {
+            "component": "core/SendNext",
+            "metadata": {
+                "label": "SendNext",
+                "x": 1296,
+                "y": 108,
+                "width": 72,
+                "height": 72
+            }
+        },
+        "core/SendNext_8lupa": {
+            "component": "core/SendNext",
+            "metadata": {
+                "label": "SendNext",
+                "x": 2412,
+                "y": 144,
+                "width": 72,
+                "height": 72
+            }
         }
     },
     "connections": [
@@ -257,8 +257,7 @@
             "tgt": {
                 "process": "objects/SetPropertyValue_1rq3g",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -294,8 +293,7 @@
             "tgt": {
                 "process": "strings/Filter_7exmh",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -305,8 +303,7 @@
             "tgt": {
                 "process": "objects/CreateObject_zxj1j",
                 "port": "start"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -316,8 +313,7 @@
             "tgt": {
                 "process": "objects/SetPropertyValue_2l0g4",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -351,8 +347,7 @@
             "tgt": {
                 "process": "strings/Filter_gexq6",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -362,8 +357,7 @@
             "tgt": {
                 "process": "objects/CreateObject_vdxrq",
                 "port": "start"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -373,8 +367,7 @@
             "tgt": {
                 "process": "objects/SetPropertyValue_nw3p6",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -384,8 +377,7 @@
             "tgt": {
                 "process": "objects/SetPropertyValue_ciugp",
                 "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -408,19 +400,7 @@
             "tgt": {
                 "process": "objects/SetPropertyValue_cidda",
                 "port": "in"
-            },
-            "metadata": {}
-        },
-        {
-            "src": {
-                "process": "objects/SetPropertyValue_cidda",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Kick_izc83",
-                "port": "in"
-            },
-            "metadata": {}
+            }
         },
         {
             "src": {
@@ -470,60 +450,6 @@
                 "process": "objects/ExtractProperty_m4t6c",
                 "port": "in"
             }
-        },
-        {
-            "src": {
-                "process": "objects/SetPropertyValue_inu1l",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Kick_izc83",
-                "port": "data"
-            }
-        },
-        {
-            "src": {
-                "process": "core/Kick_bvv9p",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "objects/SetPropertyValue_inu1l",
-                "port": "in"
-            }
-        },
-        {
-            "src": {
-                "process": "objects/SetPropertyValue_1rq3g",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Kick_bvv9p",
-                "port": "data"
-            },
-            "metadata": {
-                "route": 0
-            }
-        },
-        {
-            "src": {
-                "process": "objects/SetPropertyValue_xl5j",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "core/Kick_bvv9p",
-                "port": "in"
-            }
-        },
-        {
-            "src": {
-                "process": "core/Kick_izc83",
-                "port": "out"
-            },
-            "tgt": {
-                "process": "objects/SetPropertyValue_a56g0",
-                "port": "in"
-            },
-            "metadata": {}
         },
         {
             "src": {
@@ -559,6 +485,84 @@
             "tgt": {
                 "process": "objects/CreateObject_z78m1",
                 "port": "start"
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_1rq3g",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/SendNext_oiblh",
+                "port": "data"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_xl5j",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/SendNext_oiblh",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/SendNext_oiblh",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/SendNext_oiblh",
+                "port": "empty"
+            },
+            "tgt": {
+                "process": "core/Output_r5yj5",
+                "port": "in"
+            },
+            "metadata": {
+                "route": 9
+            }
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_inu1l",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/SendNext_8lupa",
+                "port": "data"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "objects/SetPropertyValue_cidda",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "core/SendNext_8lupa",
+                "port": "in"
+            },
+            "metadata": {}
+        },
+        {
+            "src": {
+                "process": "core/SendNext_8lupa",
+                "port": "out"
+            },
+            "tgt": {
+                "process": "objects/SetPropertyValue_a56g0",
+                "port": "in"
             },
             "metadata": {}
         },
